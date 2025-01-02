@@ -1,6 +1,6 @@
 # Higher-Education-Institutions-in-Italy-Dataset
 
-This repository contains a dataset of higher education institutions in Germany. This includes 400 higher education institutions in Germany, including universities,  universities of applied sciences and Higher Institutes as Higher Institute of Engineering, Higher Institute of biotechnologies and few others. This dataset was compiled in response to a cybersecurity investigation of Germany higher education institutions' websites [1]. The data is being made publicly available to promote open science principles [2].
+This repository contains a dataset of higher education institutions in Italy. This includes 206 higher education institutions in Italy, including universities,  universities of applied sciences and Higher Institutes as Higher Institute of Engineering, Higher Institute of biotechnologies and few others. This dataset was compiled in response to a cybersecurity investigation of Italy higher education institutions' websites [1]. The data is being made publicly available to promote open science principles [2].
 
 ## Data
 
