@@ -58,7 +58,6 @@ df['Url'] = df['Url'].str.replace(r'/.*', '', regex=True)
 # Import NUTS2013-NUTS2016.xlsx and select the right sheet
 dfNuts16Raw = pd.read_excel('NUTS2013-NUTS2016.xlsx', sheet_name='NUTS2013-NUTS2016', header=1)
 
-# Create NUTS2 mapping DataFrame for 2016
 dfNuts2_2016 = dfNuts16Raw[['Code 2016', 'NUTS level 2']].copy()
 dfNuts2_2016.rename(columns={
     'Code 2016': 'NUTS2',
