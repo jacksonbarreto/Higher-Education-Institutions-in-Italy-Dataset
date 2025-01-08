@@ -58,6 +58,7 @@ df['Url'] = df['Url'].str.replace(r'/.*', '', regex=True)
 # Import NUTS2013-NUTS2016.xlsx and select the right sheet
 dfNuts16Raw = pd.read_excel('NUTS2013-NUTS2016.xlsx', sheet_name='NUTS2013-NUTS2016', header=1)
 
+# Create NUTS2 mapping DataFrame for 2016
 dfNuts2_2016 = dfNuts16Raw[['Code 2016', 'NUTS level 2']].copy()
 dfNuts2_2016.rename(columns={
     'Code 2016': 'NUTS2',
@@ -121,9 +122,9 @@ new_column_order = (
 # Reorganize DataFrame with new column order
 df = df[new_column_order]
 
-# verifiy duplicate url
+  # verifiy duplicate url
 
-def check_duplicates_url(df, coluna_url='Url'):    
+def check_duplicates_url(df, coluna_url='Url'):
     def extract_domain_without_www(url):
         try:
             url = re.sub(r'www\.', '', url)
@@ -147,16 +148,6 @@ def check_duplicates_url(df, coluna_url='Url'):
 
 check_duplicates_url(df)
 
-# Sanatize
-
-# Remove IT0032 Università degli Studi di MACERATA
-# Because ERR_ADDRESS_UNREACHABLE
-df = df[df['ETER_ID'] != 'IT0032']
-
-# Remove IT0178 Conservatorio di PESARO "Gioacchino Rossini"
-# Because of expired https
-df = df[df['ETER_ID'] != 'IT0178']
-
 # Enrichment
 
 # Change url of IT0162 Conservatorio di GENOVA "Nicolò Paganini"
@@ -167,6 +158,9 @@ df.loc[df['ETER_ID'] == 'IT0162', 'Url'] = 'www.conspaganini.it'
 # Because the url was wrong
 df.loc[df['ETER_ID'] == 'IT0203', 'Url'] = 'www.conscremona.it'
 
+# Change url of IT0161 Accademia delle Belle Arti legalmente riconosciuta di VERONA "Cignaroli""
+# Because the url was wrong
+df.loc[df['ETER_ID'] == 'IT0161', 'Url'] = 'https://accademiabelleartiverona.it'
 
 # saving data on CSV file
 file_name = 'italy-heis.csv'
